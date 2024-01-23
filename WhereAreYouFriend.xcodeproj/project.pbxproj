@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F47B385D2B5C872000D963B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A9F4A82B5BB5670083C7F1 /* Assets.xcassets */; };
+		F47B38612B5C879A00D963B5 /* WhereAreYouFriend.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4A9F4A52B5BB5640083C7F1 /* WhereAreYouFriend.xcdatamodeld */; };
 		F4A9F49D2B5BB5640083C7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9F49C2B5BB5640083C7F1 /* AppDelegate.swift */; };
 		F4A9F49F2B5BB5640083C7F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9F49E2B5BB5640083C7F1 /* SceneDelegate.swift */; };
 		F4A9F4A12B5BB5640083C7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9F4A02B5BB5640083C7F1 /* ViewController.swift */; };
 		F4A9F4A42B5BB5640083C7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A9F4A22B5BB5640083C7F1 /* Main.storyboard */; };
-		F4A9F4A72B5BB5640083C7F1 /* WhereAreYouFriend.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4A9F4A52B5BB5640083C7F1 /* WhereAreYouFriend.xcdatamodeld */; };
-		F4A9F4A92B5BB5670083C7F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A9F4A82B5BB5670083C7F1 /* Assets.xcassets */; };
 		F4A9F4AC2B5BB5670083C7F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A9F4AA2B5BB5670083C7F1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +40,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F47B385E2B5C872900D963B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4A9F4A52B5BB5640083C7F1 /* WhereAreYouFriend.xcdatamodeld */,
+				F4A9F4A82B5BB5670083C7F1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F4A9F4902B5BB5640083C7F1 = {
 			isa = PBXGroup;
 			children = (
@@ -59,17 +68,48 @@
 		F4A9F49B2B5BB5640083C7F1 /* WhereAreYouFriend */ = {
 			isa = PBXGroup;
 			children = (
-				F4A9F49C2B5BB5640083C7F1 /* AppDelegate.swift */,
-				F4A9F49E2B5BB5640083C7F1 /* SceneDelegate.swift */,
-				F4A9F4A02B5BB5640083C7F1 /* ViewController.swift */,
-				F4A9F4A22B5BB5640083C7F1 /* Main.storyboard */,
-				F4A9F4A82B5BB5670083C7F1 /* Assets.xcassets */,
-				F4A9F4AA2B5BB5670083C7F1 /* LaunchScreen.storyboard */,
-				F4A9F4AD2B5BB5670083C7F1 /* WhereAreYouFriend.entitlements */,
-				F4A9F4AE2B5BB5670083C7F1 /* Info.plist */,
-				F4A9F4A52B5BB5640083C7F1 /* WhereAreYouFriend.xcdatamodeld */,
+				F47B385E2B5C872900D963B5 /* Resources */,
+				F4A9F4B82B5BB7B10083C7F1 /* Views */,
+				F4A9F4B72B5BB7A60083C7F1 /* Extensions */,
+				F4A9F4B62B5BB79C0083C7F1 /* ViewControllers */,
+				F4A9F4B52B5BB7900083C7F1 /* SupportingFiles */,
 			);
 			path = WhereAreYouFriend;
+			sourceTree = "<group>";
+		};
+		F4A9F4B52B5BB7900083C7F1 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F4A9F4AE2B5BB5670083C7F1 /* Info.plist */,
+				F4A9F4AD2B5BB5670083C7F1 /* WhereAreYouFriend.entitlements */,
+				F4A9F49C2B5BB5640083C7F1 /* AppDelegate.swift */,
+				F4A9F49E2B5BB5640083C7F1 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		F4A9F4B62B5BB79C0083C7F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4A9F4A02B5BB5640083C7F1 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F4A9F4B72B5BB7A60083C7F1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4A9F4B82B5BB7B10083C7F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4A9F4A22B5BB5640083C7F1 /* Main.storyboard */,
+				F4A9F4AA2B5BB5670083C7F1 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +170,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47B385D2B5C872000D963B5 /* Assets.xcassets in Resources */,
 				F4A9F4AC2B5BB5670083C7F1 /* LaunchScreen.storyboard in Resources */,
-				F4A9F4A92B5BB5670083C7F1 /* Assets.xcassets in Resources */,
 				F4A9F4A42B5BB5640083C7F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,9 +183,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47B38612B5C879A00D963B5 /* WhereAreYouFriend.xcdatamodeld in Sources */,
 				F4A9F4A12B5BB5640083C7F1 /* ViewController.swift in Sources */,
 				F4A9F49D2B5BB5640083C7F1 /* AppDelegate.swift in Sources */,
-				F4A9F4A72B5BB5640083C7F1 /* WhereAreYouFriend.xcdatamodeld in Sources */,
 				F4A9F49F2B5BB5640083C7F1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +264,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhereAreYouFriend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -281,6 +323,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhereAreYouFriend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -296,12 +340,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WhereAreYouFriend/WhereAreYouFriend.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WhereAreYouFriend/SupportingFiles/WhereAreYouFriend.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3F2Y7B7Z54;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WhereAreYouFriend/Info.plist;
+				INFOPLIST_FILE = WhereAreYouFriend/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -325,12 +369,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WhereAreYouFriend/WhereAreYouFriend.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WhereAreYouFriend/SupportingFiles/WhereAreYouFriend.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3F2Y7B7Z54;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WhereAreYouFriend/Info.plist;
+				INFOPLIST_FILE = WhereAreYouFriend/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
