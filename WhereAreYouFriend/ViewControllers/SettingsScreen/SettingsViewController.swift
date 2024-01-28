@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  WhereAreYouFriend
 //
-//  Created by BERAT ALTUNTAŞ on 20.01.2024.
+//  Created by BERAT ALTUNTAŞ on 29.01.2024.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
+    
 }
-
