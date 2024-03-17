@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import MapKit
 
 final class HomeViewController: BaseViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
 
 }
-
+extension HomeViewController: MKMapViewDelegate {
+    
+}
