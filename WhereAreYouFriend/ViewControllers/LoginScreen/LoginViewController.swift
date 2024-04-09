@@ -12,9 +12,62 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var mainContainer: UIView!
     @IBOutlet weak var continueButton: CustomUIButton!
     @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var firstTextLabel: UILabel!
+    @IBOutlet weak var secondTextLabel: UILabel!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
+    @IBOutlet weak var pageCounterLabel: UILabel!
     var denee: String?
+    var loginPageCounter: Int = 1 {
+        didSet{
+            var headerTitleText = ""
+            var firstLabelText = ""
+            var secondLabelText = ""
+            switch(loginPageCounter) {
+            case 1:
+                headerTitleText = "Login"
+                firstLabelText = "Name"
+                secondLabelText = "Username"
+                break
+            case 2:
+                headerTitleText = "Login"
+                firstLabelText = "Email"
+                secondLabelText = "Password"
+                break
+            case 3:
+                headerTitleText = "Login"
+                firstLabelText = "Name"
+                secondLabelText = "Username"
+                break
+            case 4:
+                headerTitleText = "Login"
+                firstLabelText = "Name"
+                secondLabelText = "Username"
+                break
+            default:
+                headerTitleText = ""
+                break
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {[weak self] in
+                self?.headerTitleLabel.text = headerTitleText
+                self?.pageCounterLabel.text = "\(self!.loginPageCounter) of 4"
+                
+                self?.firstTextLabel.text = firstLabelText
+                self?.firstTextField.placeholder = "Your \(firstLabelText)"
+                self?.firstTextField.text = ""
+                
+                self?.secondTextLabel.text = secondLabelText
+                self?.secondTextField.placeholder = "Your \(secondLabelText)"
+                self?.secondTextField.text = ""
+                
+                self?.loadingIndicatorView.stopAnimating()
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         let notificationCenter = NotificationCenter.default
@@ -55,7 +108,7 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func editDidEnd(_ sender: Any) {
-        
+        continueButtonBottomConstraint.constant = 20
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -81,15 +134,17 @@ class LoginViewController: BaseViewController {
     
     @IBAction func ContinueButton_TUI(_ sender: Any) {
         if(checkTextFieldValid(textField: firstTextField) && checkTextFieldValid(textField: secondTextField)) {
-            performSegue(withIdentifier: "goToLoginScreen2", sender: self)
+            loadingIndicatorView.startAnimating()
+            loginPageCounter += 1
         }
     }
     
     func checkTextFieldValid(textField: UITextField!)-> Bool {
-        
-        if(textField.text!.isEmpty &&
-           textField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty) {
-            return true
+        if let textField = textField {
+            if(!textField.text!.isEmpty &&
+               !textField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty) {
+                return true
+            }
         }
         return false
     }
@@ -99,6 +154,10 @@ class LoginViewController: BaseViewController {
             guard let vc = segue.destination as? LoginViewController else { return }
             // sonraki ekrana verilecek model bloğu
         }
+    }
+    
+    func loadingLoginItems() {
+        
     }
 }
 
