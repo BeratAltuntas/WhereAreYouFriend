@@ -21,48 +21,48 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var pageCounterLabel: UILabel!
     var denee: String?
+    var loginPropertiesModel = [LoginScreenPropertiesModel()]
+    
     var loginPageCounter: Int = 1 {
         didSet{
+    
             var headerTitleText = ""
-            var firstLabelText = ""
-            var secondLabelText = ""
             switch(loginPageCounter) {
             case 1:
+                if loginPropertiesModel.count < 1 {
+                    loginPropertiesModel.append(LoginScreenPropertiesModel(firstTextFieldTitle: "Name", firstTextFieldPlaceHolder: "Your Name", secondtTextFieldTitle: "Username", secondTextFieldPlaceHolder: "Your Username", pageNumber: loginPageCounter))
+                }
                 headerTitleText = "Login"
-                firstLabelText = "Name"
-                secondLabelText = "Username"
                 break
             case 2:
+                if loginPropertiesModel.count < 2 {
+                    loginPropertiesModel.append(LoginScreenPropertiesModel(firstTextFieldTitle: "Email", firstTextFieldPlaceHolder: "Your Email", secondtTextFieldTitle: "Password", secondTextFieldPlaceHolder: "Your Password", pageNumber: loginPageCounter))
+                }
+                
                 headerTitleText = "Login"
-                firstLabelText = "Email"
-                secondLabelText = "Password"
                 break
             case 3:
                 headerTitleText = "Login"
-                firstLabelText = "Name"
-                secondLabelText = "Username"
                 break
             case 4:
                 headerTitleText = "Login"
-                firstLabelText = "Name"
-                secondLabelText = "Username"
                 break
             default:
                 headerTitleText = ""
                 break
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {[weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + (Double(loginPageCounter) - 1.0)) {[weak self] in
                 self?.headerTitleLabel.text = headerTitleText
-                self?.pageCounterLabel.text = "\(self!.loginPageCounter) of 4"
+                self?.pageCounterLabel.text = "\(self?.loginPropertiesModel[self!.loginPageCounter-1].pageNumber ?? 1) of 4"
                 
-                self?.firstTextLabel.text = firstLabelText
-                self?.firstTextField.placeholder = "Your \(firstLabelText)"
-                self?.firstTextField.text = ""
+                self?.firstTextLabel.text = self?.loginPropertiesModel[self!.loginPageCounter-1].firstTextFieldTitle
+                self?.firstTextField.placeholder = self?.loginPropertiesModel[self!.loginPageCounter-1].firstTextFieldPlaceHolder
+                self?.firstTextField.text = self?.loginPropertiesModel[self!.loginPageCounter-1].firstTextFieldText
                 
-                self?.secondTextLabel.text = secondLabelText
-                self?.secondTextField.placeholder = "Your \(secondLabelText)"
-                self?.secondTextField.text = ""
+                self?.secondTextLabel.text = self?.loginPropertiesModel[self!.loginPageCounter-1].secondtTextFieldTitle
+                self?.secondTextField.placeholder = self?.loginPropertiesModel[self!.loginPageCounter-1].secondTextFieldPlaceHolder
+                self?.secondTextField.text = self?.loginPropertiesModel[self!.loginPageCounter-1].secondtTextFieldText
                 
                 self?.loadingIndicatorView.stopAnimating()
             }
@@ -72,11 +72,27 @@ class LoginViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardWillAppear(notification: )), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        loginPropertiesModel = [LoginScreenPropertiesModel()]
+        loginPropertiesModel.removeAll()
+        loginPageCounter = 1
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    
+    }
+
+   @objc func back(sender: UIBarButtonItem) {
+       loginPropertiesModel[loginPageCounter-1].pageNumber -= 1
+       if loginPropertiesModel[loginPageCounter-1].pageNumber > 0 {
+           loginPageCounter -= 1
+       } else {
+           _ = navigationController?.popViewController(animated: true)
+       }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -91,20 +107,17 @@ class LoginViewController: BaseViewController {
             return
         }
 
-        let keyboardHeight: CGFloat
+        var keyboardHeight: CGFloat
         if #available(iOS 11.0, *) {
             keyboardHeight = keyboardFrame.cgRectValue.height - self.view.safeAreaInsets.bottom
         } else {
             keyboardHeight = keyboardFrame.cgRectValue.height
         }
         
-
+        if keyboardHeight < 0 {
+            keyboardHeight = CGFloat.zero
+        }
         continueButtonBottomConstraint.constant = keyboardHeight + 20
-    }
-    
-    @IBAction func editBegin(_ sender: Any) {
-
-        
     }
     
     @IBAction func editDidEnd(_ sender: Any) {
@@ -112,7 +125,6 @@ class LoginViewController: BaseViewController {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         return true
     }
     
@@ -134,19 +146,24 @@ class LoginViewController: BaseViewController {
     
     @IBAction func ContinueButton_TUI(_ sender: Any) {
         if(checkTextFieldValid(textField: firstTextField) && checkTextFieldValid(textField: secondTextField)) {
+            loginPropertiesModel[loginPageCounter-1].firstTextFieldText = firstTextField.text ?? ""
+            loginPropertiesModel[loginPageCounter-1].secondtTextFieldText = secondTextField.text ?? ""
             loadingIndicatorView.startAnimating()
             loginPageCounter += 1
+            self.firstTextField.becomeFirstResponder()
         }
     }
     
     func checkTextFieldValid(textField: UITextField!)-> Bool {
         if let textField = textField {
-            if(!textField.text!.isEmpty &&
-               !textField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty) {
-                return true
+            if(textField.text!.isEmpty &&
+               textField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty) {
+                AlertBoxManager.shared.delegate = self
+                AlertBoxManager.shared.showAlertBoxOK(title: "Hatalı Giriş", message: "Alanları yanlış girdiniz.")
+                return false
             }
         }
-        return false
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -159,6 +176,7 @@ class LoginViewController: BaseViewController {
     func loadingLoginItems() {
         
     }
+    
 }
 
 extension LoginViewController: UITextViewDelegate {

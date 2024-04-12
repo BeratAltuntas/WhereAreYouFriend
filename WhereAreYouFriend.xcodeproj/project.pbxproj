@@ -18,6 +18,10 @@
 		F4A9F4A12B5BB5640083C7F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9F4A02B5BB5640083C7F1 /* HomeViewController.swift */; };
 		F4A9F4A42B5BB5640083C7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A9F4A22B5BB5640083C7F1 /* Main.storyboard */; };
 		F4A9F4AC2B5BB5670083C7F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A9F4AA2B5BB5670083C7F1 /* LaunchScreen.storyboard */; };
+		F4BF76742BC876FE00E37A48 /* LoginScreenPropertiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF76732BC876FE00E37A48 /* LoginScreenPropertiesModel.swift */; };
+		F4BF76782BC9C1BB00E37A48 /* AlertBoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF76772BC9C1BB00E37A48 /* AlertBoxManager.swift */; };
+		F4BF767C2BC9C52A00E37A48 /* BaseLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF767B2BC9C52A00E37A48 /* BaseLocationModel.swift */; };
+		F4BF767E2BC9ECA300E37A48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4BF767D2BC9ECA300E37A48 /* GoogleService-Info.plist */; };
 		F4C7DA692B8A40EE00BF6FCD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7DA682B8A40EE00BF6FCD /* SearchViewController.swift */; };
 		F4C7DA6B2B9374FD00BF6FCD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C7DA6A2B9374FD00BF6FCD /* Login.storyboard */; };
 		F4C7DA6D2B93755100BF6FCD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7DA6C2B93755100BF6FCD /* LoginViewController.swift */; };
@@ -45,6 +49,10 @@
 		F4A9F4AB2B5BB5670083C7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4A9F4AD2B5BB5670083C7F1 /* WhereAreYouFriend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhereAreYouFriend.entitlements; sourceTree = "<group>"; };
 		F4A9F4AE2B5BB5670083C7F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4BF76732BC876FE00E37A48 /* LoginScreenPropertiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenPropertiesModel.swift; sourceTree = "<group>"; };
+		F4BF76772BC9C1BB00E37A48 /* AlertBoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBoxManager.swift; sourceTree = "<group>"; };
+		F4BF767B2BC9C52A00E37A48 /* BaseLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocationModel.swift; sourceTree = "<group>"; };
+		F4BF767D2BC9ECA300E37A48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4C7DA682B8A40EE00BF6FCD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F4C7DA6A2B9374FD00BF6FCD /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F4C7DA6C2B93755100BF6FCD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +114,8 @@
 		F4A9F49B2B5BB5640083C7F1 /* WhereAreYouFriend */ = {
 			isa = PBXGroup;
 			children = (
+				F4BF76762BC9C19A00E37A48 /* Managers */,
+				F4BF76752BC8772F00E37A48 /* Models */,
 				F47B385E2B5C872900D963B5 /* Resources */,
 				F4A9F4B82B5BB7B10083C7F1 /* Views */,
 				F4A9F4B72B5BB7A60083C7F1 /* Extensions */,
@@ -119,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				F4A9F4AE2B5BB5670083C7F1 /* Info.plist */,
+				F4BF767D2BC9ECA300E37A48 /* GoogleService-Info.plist */,
 				F4A9F4AD2B5BB5670083C7F1 /* WhereAreYouFriend.entitlements */,
 				F4A9F49C2B5BB5640083C7F1 /* AppDelegate.swift */,
 				F4A9F49E2B5BB5640083C7F1 /* SceneDelegate.swift */,
@@ -157,6 +168,39 @@
 				F4C7DA6A2B9374FD00BF6FCD /* Login.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F4BF76752BC8772F00E37A48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4BF767A2BC9C51B00E37A48 /* DataModels */,
+				F4BF76792BC9C50C00E37A48 /* ScreenViewModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4BF76762BC9C19A00E37A48 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F4BF76772BC9C1BB00E37A48 /* AlertBoxManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F4BF76792BC9C50C00E37A48 /* ScreenViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F4BF76732BC876FE00E37A48 /* LoginScreenPropertiesModel.swift */,
+			);
+			path = ScreenViewModels;
+			sourceTree = "<group>";
+		};
+		F4BF767A2BC9C51B00E37A48 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				F4BF767B2BC9C52A00E37A48 /* BaseLocationModel.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 		F4C7DA672B8A40C400BF6FCD /* SearchScreen */ = {
@@ -273,6 +317,7 @@
 				F4A9F4AC2B5BB5670083C7F1 /* LaunchScreen.storyboard in Resources */,
 				F4A9F4A42B5BB5640083C7F1 /* Main.storyboard in Resources */,
 				F4C7DA712B93898D00BF6FCD /* SF-Pro.ttf in Resources */,
+				F4BF767E2BC9ECA300E37A48 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,11 +338,14 @@
 				F4D5457A2B67086800195D4E /* SettingsViewController.swift in Sources */,
 				F47B38612B5C879A00D963B5 /* WhereAreYouFriend.xcdatamodeld in Sources */,
 				F4D545812B6708B500195D4E /* SettingsViewModel.swift in Sources */,
+				F4BF767C2BC9C52A00E37A48 /* BaseLocationModel.swift in Sources */,
 				F4C7DA692B8A40EE00BF6FCD /* SearchViewController.swift in Sources */,
+				F4BF76742BC876FE00E37A48 /* LoginScreenPropertiesModel.swift in Sources */,
 				F4A9F4A12B5BB5640083C7F1 /* HomeViewController.swift in Sources */,
 				F4A9F49D2B5BB5640083C7F1 /* AppDelegate.swift in Sources */,
 				F469C72A2B8A3748002DF93B /* MainTabbarViewController.swift in Sources */,
 				F4D5457F2B6708AA00195D4E /* UserViewModel.swift in Sources */,
+				F4BF76782BC9C1BB00E37A48 /* AlertBoxManager.swift in Sources */,
 				F4A9F49F2B5BB5640083C7F1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

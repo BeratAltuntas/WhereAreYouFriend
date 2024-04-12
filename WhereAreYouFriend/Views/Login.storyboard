@@ -22,27 +22,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login  1/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-Rk-f0w">
-                                <rect key="frame" x="16" y="103" width="361" height="40.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-Rk-f0w">
+                                <rect key="frame" x="16" y="103" width="361" height="0.0"/>
                                 <fontDescription key="fontDescription" name="SFPro-Bold" family="SF Pro" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BS7-71-ClR">
-                                <rect key="frame" x="16" y="159.66666666666666" width="361" height="133.99999999999997"/>
+                                <rect key="frame" x="16" y="119" width="361" height="134"/>
                                 <subviews>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvl-dL-EYD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4E-Hx-KJG">
+                                        <rect key="frame" x="18" y="16" width="93" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="93" id="gvV-vb-URB"/>
+                                            <constraint firstAttribute="height" constant="32" id="wEx-Wn-oMy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFPro-Regular" family="SF Pro" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvl-dL-EYD">
                                         <rect key="frame" x="119" y="16" width="206" height="32"/>
                                         <fontDescription key="fontDescription" name="SFPro-Regular" family="SF Pro" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
                                         <connections>
-                                            <action selector="editBegin:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="PAs-Qu-nMf"/>
                                             <action selector="editDidEnd:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="mVV-gN-ccP"/>
                                             <action selector="primaryButton:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="KVE-cu-oVV"/>
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="v8I-2d-GlJ"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxW-Ye-weZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxW-Ye-weZ">
                                         <rect key="frame" x="18" y="64" width="93" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="uvv-mU-Joc"/>
@@ -51,31 +60,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CK5-ef-4sk">
+                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CK5-ef-4sk">
                                         <rect key="frame" x="119" y="64" width="206" height="32"/>
                                         <fontDescription key="fontDescription" name="SFPro-Regular" family="SF Pro" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="username"/>
                                         <connections>
-                                            <action selector="editBegin:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="hWt-fn-02H"/>
                                             <action selector="editDidEnd:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="D3t-5W-teO"/>
                                             <action selector="primaryButton:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="2nM-i6-o7Y"/>
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="Prp-cC-A5O"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter information about you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-ro-vn5">
-                                        <rect key="frame" x="18" y="112.00000000000003" width="307" height="14"/>
+                                        <rect key="frame" x="18" y="112" width="307" height="14"/>
                                         <fontDescription key="fontDescription" name="SFPro-Regular" family="SF Pro" pointSize="12"/>
                                         <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4E-Hx-KJG">
-                                        <rect key="frame" x="18" y="16" width="93" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="93" id="gvV-vb-URB"/>
-                                            <constraint firstAttribute="height" constant="32" id="wEx-Wn-oMy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFPro-Regular" family="SF Pro" pointSize="17"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -101,7 +99,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzG-dN-T08" customClass="CustomUIButton" customModule="WhereAreYouFriend" customModuleProvider="target">
-                                <rect key="frame" x="16" y="768" width="361" height="50"/>
+                                <rect key="frame" x="16" y="748" width="361" height="50"/>
                                 <color key="backgroundColor" red="0.039215686274509803" green="0.51764705882352935" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dnQ-DP-kl5"/>
@@ -121,7 +119,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJb-Q2-Vv1">
-                                <rect key="frame" x="16" y="739" width="361" height="21"/>
+                                <rect key="frame" x="16" y="719" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -137,7 +135,7 @@
                             <constraint firstItem="BS7-71-ClR" firstAttribute="leading" secondItem="tgp-Rk-f0w" secondAttribute="leading" id="Axz-9p-JYa"/>
                             <constraint firstItem="BS7-71-ClR" firstAttribute="trailing" secondItem="tgp-Rk-f0w" secondAttribute="trailing" id="ODb-IV-B3a"/>
                             <constraint firstItem="UJb-Q2-Vv1" firstAttribute="trailing" secondItem="LzG-dN-T08" secondAttribute="trailing" id="Tmb-iH-ACS"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LzG-dN-T08" secondAttribute="bottom" priority="750" id="XNm-cq-UkO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LzG-dN-T08" secondAttribute="bottom" priority="750" constant="20" id="XNm-cq-UkO"/>
                             <constraint firstItem="UJb-Q2-Vv1" firstAttribute="top" secondItem="BS7-71-ClR" secondAttribute="bottom" priority="250" constant="445.33333333333337" id="XSg-Iu-ivC"/>
                             <constraint firstItem="LzG-dN-T08" firstAttribute="trailing" secondItem="BS7-71-ClR" secondAttribute="trailing" id="aEc-1D-3xj"/>
                             <constraint firstItem="BS7-71-ClR" firstAttribute="top" secondItem="tgp-Rk-f0w" secondAttribute="bottom" constant="16" id="d9e-Wj-CAg"/>
