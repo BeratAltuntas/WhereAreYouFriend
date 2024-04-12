@@ -32,19 +32,39 @@ class LoginViewController: BaseViewController {
                 if loginPropertiesModel.count < 1 {
                     loginPropertiesModel.append(LoginScreenPropertiesModel(firstTextFieldTitle: "Name", firstTextFieldPlaceHolder: "Your Name", secondtTextFieldTitle: "Username", secondTextFieldPlaceHolder: "Your Username", pageNumber: loginPageCounter))
                 }
+                firstTextField.textContentType = .name
+                secondTextField.textContentType = .username
+                firstTextField.keyboardType = .default
+                secondTextField.keyboardType = .default
                 headerTitleText = "Login"
                 break
             case 2:
                 if loginPropertiesModel.count < 2 {
                     loginPropertiesModel.append(LoginScreenPropertiesModel(firstTextFieldTitle: "Email", firstTextFieldPlaceHolder: "Your Email", secondtTextFieldTitle: "Password", secondTextFieldPlaceHolder: "Your Password", pageNumber: loginPageCounter))
                 }
+                firstTextField.textContentType = .emailAddress
+                firstTextField.keyboardType = .emailAddress
+                
+                secondTextField.textContentType = .password
+                secondTextField.keyboardType = .alphabet
                 
                 headerTitleText = "Login"
                 break
             case 3:
+                
+                if loginPropertiesModel.count < 3 {
+                    loginPropertiesModel.append(LoginScreenPropertiesModel(firstTextFieldTitle: "Phone Number", firstTextFieldPlaceHolder: "Your Phone Number", secondtTextFieldTitle: "Password", secondTextFieldPlaceHolder: "Your Password", pageNumber: loginPageCounter))
+                }
+                firstTextField.textContentType = .telephoneNumber
+                firstTextField.keyboardType = .phonePad
                 headerTitleText = "Login"
                 break
             case 4:
+                if loginPropertiesModel.count < 4 {
+                    loginPropertiesModel.append(LoginScreenPropertiesModel(firstTextFieldTitle: "Verification Code", firstTextFieldPlaceHolder: "Your Verification Code", secondtTextFieldTitle: "Password", secondTextFieldPlaceHolder: "Your Password", pageNumber: loginPageCounter))
+                }
+                firstTextField.textContentType = .oneTimeCode
+                firstTextField.keyboardType = .numberPad
                 headerTitleText = "Login"
                 break
             default:
@@ -54,17 +74,24 @@ class LoginViewController: BaseViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + (Double(loginPageCounter) - 1.0)) {[weak self] in
                 self?.headerTitleLabel.text = headerTitleText
-                self?.pageCounterLabel.text = "\(self?.loginPropertiesModel[self!.loginPageCounter-1].pageNumber ?? 1) of 4"
+                self?.pageCounterLabel.text = "\(self!.loginPropertiesModel[self!.loginPageCounter-1].pageNumber) of 4"
                 
                 self?.firstTextLabel.text = self?.loginPropertiesModel[self!.loginPageCounter-1].firstTextFieldTitle
                 self?.firstTextField.placeholder = self?.loginPropertiesModel[self!.loginPageCounter-1].firstTextFieldPlaceHolder
                 self?.firstTextField.text = self?.loginPropertiesModel[self!.loginPageCounter-1].firstTextFieldText
+                self?.secondTextField.isHidden = true
+                self?.secondTextLabel.isHidden = true
                 
-                self?.secondTextLabel.text = self?.loginPropertiesModel[self!.loginPageCounter-1].secondtTextFieldTitle
-                self?.secondTextField.placeholder = self?.loginPropertiesModel[self!.loginPageCounter-1].secondTextFieldPlaceHolder
-                self?.secondTextField.text = self?.loginPropertiesModel[self!.loginPageCounter-1].secondtTextFieldText
-                
+                if(self!.loginPropertiesModel[self!.loginPageCounter-1].pageNumber < 3) {
+                    self?.secondTextField.isHidden = false
+                    self?.secondTextLabel.isHidden = false
+                    self?.secondTextLabel.text = self?.loginPropertiesModel[self!.loginPageCounter-1].secondtTextFieldTitle
+                    self?.secondTextField.placeholder = self?.loginPropertiesModel[self!.loginPageCounter-1].secondTextFieldPlaceHolder
+                    self?.secondTextField.text = self?.loginPropertiesModel[self!.loginPageCounter-1].secondtTextFieldText
+                }
+               
                 self?.loadingIndicatorView.stopAnimating()
+                self?.loadingIndicatorView.isHidden = true
             }
         }
     }
@@ -124,33 +151,35 @@ class LoginViewController: BaseViewController {
         continueButtonBottomConstraint.constant = 20
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
     @IBAction func primaryButton(_ sender: Any) {
         if let textField = sender as? UITextField {
             if textField.tag ==  1 {
-                /// name textfield alanı
+                /// first textfield alanı
                 self.firstTextField.resignFirstResponder()
-                self.secondTextField.becomeFirstResponder()
+                
+                if !self.secondTextField.isHidden {
+                    self.secondTextField.becomeFirstResponder()
+                }
                 
             } else if textField.tag == 2 {
-                /// email  textfield alanı
+                /// second  textfield alanı
                 self.secondTextField.resignFirstResponder()
                 textField.endEditing(true)
                 
+                ContinueButton_TUI(self)
             }
         }
     }
     
     @IBAction func ContinueButton_TUI(_ sender: Any) {
         if(checkTextFieldValid(textField: firstTextField) && checkTextFieldValid(textField: secondTextField)) {
+            
+            loadingIndicatorView.startAnimating()
             loginPropertiesModel[loginPageCounter-1].firstTextFieldText = firstTextField.text ?? ""
             loginPropertiesModel[loginPageCounter-1].secondtTextFieldText = secondTextField.text ?? ""
-            loadingIndicatorView.startAnimating()
+            
             loginPageCounter += 1
-            self.firstTextField.becomeFirstResponder()
+            
         }
     }
     
