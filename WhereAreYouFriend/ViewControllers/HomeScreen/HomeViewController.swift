@@ -27,7 +27,6 @@ extension HomeViewController: MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations[0]
-        print("location : \(location.coordinate.latitude) -  \(location.coordinate.longitude)")
         currentLocation = CLLocation.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         if yourCurrentLocation != nil{
             mapView.removeAnnotation(yourCurrentLocation)
